@@ -96,7 +96,7 @@
         <li class="mobile-menu-item">
           
           
-            Home
+            首页
           
         </li>
       </a>
@@ -105,7 +105,7 @@
         <li class="mobile-menu-item">
           
           
-            Archives
+            归档
           
         </li>
       </a>
@@ -114,7 +114,7 @@
         <li class="mobile-menu-item">
           
           
-            About
+            关于
           
         </li>
       </a>
@@ -135,7 +135,7 @@
           <a class="menu-item-link" href="/">
             
             
-              Home
+              首页
             
           </a>
         </li>
@@ -144,7 +144,7 @@
           <a class="menu-item-link" href="/archives/">
             
             
-              Archives
+              归档
             
           </a>
         </li>
@@ -153,7 +153,7 @@
           <a class="menu-item-link" href="/about">
             
             
-              About
+              关于
             
           </a>
         </li>
@@ -210,7 +210,7 @@
 <p><strong>注意：使用setRequestHeader()方法可以设置自定义的请求头部信息，接受两个参数，头部字段的名称和头部字段的值，但是必须在调用open()方法且调用send()方法之前调用它。</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var xhr=creatXHR();</div><div class="line">xhr.onreadystatechange=<span class="function"><span class="title">function</span></span>()&#123;//readyState值改变即触发该事件，该事件必须在调用open()方法之前调用。</div><div class="line">	<span class="keyword">if</span>(xhr.readyState==4)&#123;</div><div class="line">	<span class="keyword">if</span>((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||xhr.status==304)&#123;</div><div class="line">	alert(xhr.responseText);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">	alert(<span class="string">"error"</span>+xhr.status);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line">xhr.open(<span class="string">"get"</span>,<span class="string">"example.txt"</span>,<span class="literal">false</span>);</div><div class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</div><div class="line">xhr.send(null);</div></pre></td></tr></table></figure>
           <div class="read-more">
-            <a href="/2015/08/16/JQuery ajax/" class="read-more-link">Read more..</a>
+            <a href="/2015/08/16/JQuery ajax/" class="read-more-link">阅读更多</a>
           </div>
         
       
@@ -230,12 +230,12 @@
     
       <a class="prev" href="/page/2/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
+        <span class="prev-text">上一页</span>
       </a>
     
     
       <a class="next" href="/page/4/">
-        <span class="next-text">Next</span>
+        <span class="next-text">下一页</span>
         <i class="iconfont icon-right"></i>
       </a>
     
@@ -285,11 +285,11 @@
 
 <div class="copyright">
   <span class="power-by">
-    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    Theme - 
+    主题 - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
