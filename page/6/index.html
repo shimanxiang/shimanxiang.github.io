@@ -38,7 +38,7 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/page/6/"/>
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
@@ -175,13 +175,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/11/02/hello-world/">重归Hexo</a>
+          <a class="post-link" href="/2015/06/05/index/">什么是跨域？</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017-11-02
+          2015-06-05
         </span>
         
         
@@ -197,15 +197,8 @@
         
 
         
-          <p>哇，真的是要说句好久不见了，这次回归覆盖了之前的文章，只留了几篇，希望这次新写的能多几篇，哈哈哈（估计又坚持不了多久），好了好了，废话不要说太多</p>
-<h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="启动服务预览"><a href="#启动服务预览" class="headerlink" title="启动服务预览"></a>启动服务预览</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div><div class="line">$ hexo g</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+          <h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><h3 id="一个域名地址的组成"><a href="#一个域名地址的组成" class="headerlink" title="一个域名地址的组成"></a>一个域名地址的组成</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http:// www  . abc.com  : 8080/  script/jquery.js</div><div class="line">协议   子域名   主域名    端口号  请求资源地址</div></pre></td></tr></table></figure>
+<p>不同域只间相互请求资源，就叫做跨域<br>比如：<a href="http://www.abc.com/index.html" target="_blank" rel="external">http://www.abc.com/index.html</a> 请求 <a href="http://www.efg.com/service.php" target="_blank" rel="external">http://www.efg.com/service.php</a><br>JavaScript出于安全方面的考虑，不允许进行跨域调用其他页面的对象<br>例如：www.abc.com/index.html 和 <a href="https://www.abc.com/index.html（跨域）" target="_blank" rel="external">https://www.abc.com/index.html（跨域）</a></p>
 
         
       
@@ -223,11 +216,11 @@
   
   <nav class="pagination">
     
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">Next</span>
-        <i class="iconfont icon-right"></i>
+      <a class="prev" href="/page/5/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">Prev</span>
       </a>
+    
     
   </nav>
 

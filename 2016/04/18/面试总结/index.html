@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>面试总结 | Sophiasmx&#39;s Blog</title>
+  <meta name="author" content="smx">
+  
+  <meta name="description" content="腾讯面试总结">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="面试总结"/>
+  <meta property="og:site_name" content="Sophiasmx&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Sophiasmx&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Sophiasmx&#39;s Blog</a></h1>
+  <h2><a href="/">不忘初心，方得始终</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-04-18T14:47:46.000Z"><a href="/2016/04/18/面试总结/">2016-04-18</a></time>
+      
+      
+  
+    <h1 class="title">面试总结</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="面试部门：腾讯sng互娱事业群">面试部门：腾讯sng互娱事业群</h3><p>说好的一面问基础呢，开口就是管理实验室，职业规划，基本都是围绕项目在问。好吧，我承认还是太菜了，继续努力吧！<br>回到正题，这次面试跟性能优化相关和安全性方面的知识点比较多，而自己这方面的知识都比较薄弱。</p>
+<h2 id="性能优化">性能优化</h2><h3 id="实验室写的项目，你们是如何对你们的网站进行性能优化的？例如，一个页面加载很慢要怎么办？"><strong>实验室写的项目，你们是如何对你们的网站进行性能优化的？例如，一个页面加载很慢要怎么办？</strong></h3><p><strong>雅虎34军规</strong></p>
+<ul>
+<li>减少http请求<br>例如：把多个js,css文件在可能的情况下写进一个文件。</li>
+<li>利用CDN技术</li>
+<li>设置头文件过期或者静态缓存</li>
+<li>Gzip压缩<br>Gzip格式是一种很普遍的压缩技术，几乎所有的浏览器都有解压Gzip格式的能力，而且它可以压缩的比例非常大，一般压缩率为85%。</li>
+<li>把css放顶部</li>
+<li>把js放底部</li>
+<li>避免css表达式</li>
+<li>将js和css外链</li>
+<li>减少DNS查找</li>
+<li>减少js和css的体积</li>
+<li>避免重定向</li>
+<li>删除重复脚本</li>
+<li>配置ETags</li>
+<li>缓存ajax</li>
+<li>尽早的释放缓冲</li>
+<li>用get方式进行ajax请求<br>Get 方法和服务器只有一次交互（发送数据），而 Post 要两次（发送头部再发送数据）</li>
+<li>延迟加载组件<br>最先加载必须的组件进行页面初始化，然后再加载其他</li>
+<li>预加载组件<br>提前加载以后可能用到的东西，和延迟加载并不冲突，它的目的是为后续请求提供更快的响应</li>
+<li>减少DOM元素数量</li>
+<li>跨域分离组件<br>页面组件多个来源可以增大你的平行下载量，但注意不要过多，超过2-4个域名会引起上面说到的DNS查找浪费</li>
+<li>减少iframe数量</li>
+<li>不要出现404页面<br>站点本身里（非搜索结果）出现404页面，无意义的404页面会影响用户体验并且会消耗服务器资源</li>
+<li>减小cookie<br>Cookie在服务器及浏览器之间的通过文件头进行交换，尽可能减小Cookie体积，设置合理的过期时间，能够很好的提高效率。</li>
+<li>对组件使用无Cookie的域名<br>对静态组件的Cookie读取是一种浪费，使用另一个无Cookie的域名来存放你的静态组件式一个好方法，或者也可以在Cookie中只存放带www的域名</li>
+<li>减少DOM的访问次数</li>
+<li>开发灵活的事件处理句柄</li>
+<li>@import 使用&lt; link &gt;而非 @import</li>
+<li>避免过滤器的使用</li>
+<li>优化图片<br>将你的GIF转为PNG8会是个减小体积的好办法，另外有很多方法处理你的JPG及PNG图片以达到优化效果</li>
+<li>优化CSS SPirit</li>
+<li>不要在HTML中缩放图片<br>图片要用多大的就用多大的，1000X1000的图片被width=”100″ height=”100″以后，本身的KB数是不会减少的</li>
+<li>缩小favicon. ico的大小并缓存它</li>
+<li>保证组件在25K以下</li>
+<li>将组件打包进一个多部分的文档中</li>
+</ul>
+<p>详解及参考资料：<br><a href="http://blog.csdn.net/yangqicong/article/details/7057982" target="_blank" rel="external">http://blog.csdn.net/yangqicong/article/details/7057982</a></p>
+<h2 id="前端安全性">前端安全性</h2><h3 id="那你们是如何保证你们的系统安全的呢？"><strong>那你们是如何保证你们的系统安全的呢？</strong></h3><p><strong>XSS漏洞（跨域脚本攻击）XSS是利用用户对当前网站的信任来发起攻击</strong></p>
+<ul>
+<li><p>基于反射的XSS攻击，主要依靠站点服务端返回脚本，在客户端触发执行从而发起WEB攻击。</p>
+</li>
+<li><p>基于DOM或本地的XSS攻击。植入悬浮广告（当然你可以关闭它），这貌似没什么，但如果插入的脚本是获取你敏感数据的恶意脚本那就不一样了。像这种直接存在于页面，无须经过服务器返回脚本处理就直接跨域发送用户信息的行为就是基于本地的XSS攻击</p>
+</li>
+<li><p>基于存储的XSS攻击。它是通过贴吧啊博客园啊等地方来发表带有恶意跨域脚本的帖子或文章，从而把恶意脚本存储在里面，每个访问该帖子/文章的人就会中招。</p>
+</li>
+</ul>
+<p><strong> CSRF（跨站伪造）CSRF是利用网站对用户的信任来发起攻击。</strong></p>
+<p>可以这样理解CSRF,攻击者盗用了你的身份，以你的名义发送恶意请求。CSRF能够做的事情包括：以你名义发送邮件，发消息，盗取你的账号，甚至于购买商品，虚拟货币转账……造成的问题包括：个人隐私泄露以及财产安全。</p>
+<pre><code>要完成一次CSRF攻击，受害者必须依次完成两个步骤:
+</code></pre><p>　　    1. 登录受信任网站A，并在本地生成Cookie。</p>
+<pre><code><span class="number">2</span>. 在不登出<span class="literal">A</span>的情况下，访问危险网站B。
+</code></pre><h3 id="解决方案:">解决方案:</h3><pre><code><span class="bullet">1. </span>永远不要相信客户端传来的任何信息，对这些信息都应先进行编码或过滤处理；
+<span class="bullet">2. </span>谨慎返回用户输入的信息；
+<span class="bullet">3. </span>检查、验证请求来源，对每一个重要的操作都进行重新验证
+<span class="bullet">4. </span>对用户上传的文件进行验证（不单单是格式验证，比方一张gif图片还应将其转为二进制并验证其每帧颜色值<span class="xml"><span class="tag">&lt;<span class="title">无符号8位</span>&gt;</span></span>和宽高值<span class="xml"><span class="tag">&lt;<span class="title">无符号16位</span>&gt;</span></span>）
+<span class="bullet">5. </span>不要将重要文件、备份文件存放在公众可访问到的地方；
+<span class="bullet">6. </span>.....
+</code></pre><h3 id="总结"><strong>总结</strong></h3><p><strong>后端永远不能相信前端。前端验证的重点不是阻止非法操作，而是提供出错的友好界面，不论错误信息来自前端还是后端。后端验证阻止任何不符合要求的行为。很多时候前端做的一系列验证操作是为了方便后台的验证.</strong></p>
+<p>详解及参考资料：<br><a href="http://www.cnblogs.com/vajoy/p/4176908.html" target="_blank" rel="external">http://www.cnblogs.com/vajoy/p/4176908.html</a><br><a href="http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html" target="_blank" rel="external">http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html</a></p>
+<h2 id="同源策略">同源策略</h2><h3 id="知道什么是同源策略么？"><strong> 知道什么是同源策略么？</strong></h3><pre><code>何谓同源:
+    <span class="built_in">URL</span>由协议、域名、端口和路径组成，如果两个<span class="built_in">URL</span>的协议、域名和端口相同，则表示他们同源。
+同源策略:
+    浏览器的同源策略，限制了来自不同源的<span class="string">"document"</span>或脚本，对当前<span class="string">"document"</span>读取或设置某些属性。
+    从一个域上加载的脚本不允许访问另外一个域的文档属性。
+</code></pre><h2 id="跨域">跨域</h2><h3 id="知不知道什么是跨域？ajax如何进行跨域？"><strong>知不知道什么是跨域？ajax如何进行跨域？</strong></h3><pre><code>什么是跨域:
+    只要协议，域名，端口有任何一个不同，就被当做不同的域。对于端口和协议的不同，只能通过后台来解决。
+
+CORS（跨域资源共享）:
+    CORS（Cross-Origin Resource Sharing）跨域资源共享。CORS背后的基本思想就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+服务器端在HTTP的响应头中加入：
+    Access-Control-Allow-Origin
+    Access-Control-Request-<span class="function"><span class="keyword">Method</span>
+    <span class="title">Access</span>-<span class="title">Control</span>-<span class="title">Allow</span>-<span class="title">Headers</span>
+    <span class="title">Access</span>-<span class="title">Control</span>-<span class="title">Expose</span>-<span class="title">Headers</span>。。。。。。
+    多个域名之间用逗号分隔，表示对所示域名提供跨域访问权限。"*"表示允许所有域名的跨域访问。
+客户端可以有两种行为：
+       1. 发送<span class="title">OPTIONS</span>请求，请求<span class="title">Access</span>-<span class="title">Control</span>信息。如果自己的域名在允许的访问列表中，则发送真正的请求，否则放弃请求发送。
+       2. 直接发送请求，然后检查<span class="title">response</span>的<span class="title">Access</span>-<span class="title">Control</span>信息，如果自己的域名在允许的访问列表中，则读取<span class="title">response</span> <span class="title">body</span>，否则放弃。
+       本质上服务端的<span class="title">response</span>内容已经到达本地，<span class="title">JavaScript</span>决定是否要去读取。</span>
+</code></pre><h3 id="JSONP"><strong>JSONP</strong></h3><p>简单讲就是HTML里面所有带src属性的标签都可以跨域，如iframe，img，script等。<br>JSONP由两部分组成：回调函数和数据。回调函数是当响应到来时应该在页面中调用的函数，而数据就是传入回调函数中的JSON数据。所以可以把需要跨域的请求改成用script脚本加载即可，服务器返回执行字符串，但是这个字符串是在window全局作用域下执行的，你需要把他返回到你的代码的作用域内，这里就需要临时创建一个全局的回调函数，并把到传到后台，最后再整合实际要请求的数组，返回给前端，让浏览器直接调用，用回调的形式回到你的原代码流程中。</p>
+<p><strong>JSONP只支持get请求，CORS支持所有请求，JSONP它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题。</strong></p>
+<p>详解及参考资料：<br><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2016/04/cors.html</a><br><a href="http://www.w3cfuns.com/notes/21599/ee9ae0fd070da42525aeefd4f366c197?ref=myread" target="_blank" rel="external">http://www.w3cfuns.com/notes/21599/ee9ae0fd070da42525aeefd4f366c197?ref=myread</a><br><a href="https://segmentfault.com/a/1190000000718840" target="_blank" rel="external">https://segmentfault.com/a/1190000000718840</a><br><a href="http://blog.csdn.net/shimiso/article/details/21830313" target="_blank" rel="external">http://blog.csdn.net/shimiso/article/details/21830313</a></p>
+
+      
+    </div>
+    <footer>
+      
+      <div class="clearfix"></div>       
+    </footer>
+  </div>
+</article>
+
+<nav id="pagination" >
+    
+    <a href="/2016/05/04/CSS布局/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2016/04/07/http部分内容总结/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-面试总结" data-title="面试总结" data-url="http://shimanxiang.github.io/2016/04/18/面试总结/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shimanxiang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:shimanxiang.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>6</small></li>
+  
+    <li><a href="/categories/ajax/">ajax</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/兼容性/">兼容性</a><small>1</small></li>
+  
+    <li><a href="/categories/常见问题/">常见问题</a><small>1</small></li>
+  
+    <li><a href="/categories/每日一题/">每日一题</a><small>1</small></li>
+  
+    <li><a href="/categories/面试笔试/">面试笔试</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://weibo.com/3875424371/info">新浪微博</a></li>
+<li><a href="http://www.imooc.com/">慕课</a></li>
+<li><a href="http://www.dearhaoge.com/">问水</a></li>
+<li><a href="http://xiaojwithu.info/">随遇而安</a></li>
+<li><a href="http://www.cnblogs.com/hate13/">哈特13</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 smx
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+  <a href="https://github.com/shimanxiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Alert">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/page/4/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> Alert </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Alert</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            About
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Alert</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2015/06/22/this小题目/">JavaScript中this的几个小题目</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2015-06-22
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+
+        
+          <h3 id="JavaScript中有关this关键字的几个小题目"><a href="#JavaScript中有关this关键字的几个小题目" class="headerlink" title="JavaScript中有关this关键字的几个小题目"></a>JavaScript中有关this关键字的几个小题目</h3><p>请看以下代码，alert出来的值分别是什么(答案按alert先后顺序写的)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var a = 10;  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">test</span></span>() &#123;  </div><div class="line">    a = 100;  </div><div class="line">    alert(a);  </div><div class="line">    alert(this.a);  </div><div class="line">    var a;  </div><div class="line">    alert(a);  </div><div class="line">&#125;  </div><div class="line"><span class="built_in">test</span>();</div></pre></td></tr></table></figure>
+<p>正确答案：100,10,100；<br>说明：this.a中的this指的是window对象。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">showName</span></span>() &#123; </div><div class="line">    alert(this.name); </div><div class="line">&#125; </div><div class="line">var obj = &#123; </div><div class="line">    id:1,</div><div class="line">    name:<span class="string">"jacky"</span>,</div><div class="line">    showName:showName </div><div class="line">  &#125;; </div><div class="line">obj.showName();</div></pre></td></tr></table></figure>
+<p>正确答案：jacky<br>说明：this关键字指向函数(方法)的所有者,即obj对象。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var fullname =<span class="string">'John Doe'</span>;</div><div class="line">    var obj =&#123;</div><div class="line">        fullname:<span class="string">'Colin Ihrig'</span>,</div><div class="line">        prop:&#123;</div><div class="line">        fullname:<span class="string">'Aurelio De Rosa'</span>,</div><div class="line">        getFullname:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">             <span class="built_in">return</span> this.fullname;</div><div class="line">         &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    alert(obj.prop.getFullname());</div><div class="line">    var <span class="built_in">test</span> = obj.prop.getFullname;</div><div class="line">    alert(<span class="built_in">test</span>());</div></pre></td></tr></table></figure>
+<p>正确答案： Aurelio De Rosa ，John Doe。<br>说明：第一个alert出来的this指的是obj对象，而test函数等价于</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">test</span>=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"><span class="built_in">return</span> this.fullname;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此时this指的是全局对象</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var myObject= &#123;</div><div class="line">    num: 2,</div><div class="line">    add: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            this.num=3;</div><div class="line">            (<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            alert(this.num);//undefined</div><div class="line">            this.num=4;</div><div class="line">            &#125;)();</div><div class="line">            alert(this.num)//3</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line">myObject.add();</div></pre></td></tr></table></figure>
+<p>正确答案：undefined , 3</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var a = <span class="string">'global'</span>;</div><div class="line">var obj = &#123;</div><div class="line">    a : <span class="string">'local'</span>,</div><div class="line">    <span class="built_in">test</span> : <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">            <span class="keyword">function</span> <span class="function"><span class="title">test1</span></span>()&#123;</div><div class="line">                alert(this.a);//global</div><div class="line">            &#125;</div><div class="line">            alert(this.a);//<span class="built_in">local</span></div><div class="line">            test1();</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.test();</div></pre></td></tr></table></figure>
+<p>正确答案：local ，global</p>
+<p><strong>说明：此题与上题属于一个类型。《JS权威指南》里明确指明了当一个函数作为函数而不是方法调用时这个this关键字引用全局对象。特别指明了，当一个嵌套的函数在一个包含函数中调用，而这个包含的函数是作为方法调用时，这也是成立的：this在包含的函数中有一个值，但是它却不太直观地引用嵌套的函数体的内部的全局对象。</strong></p>
+
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    
+      <a class="prev" href="/page/3/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/page/5/">
+        <span class="next-text">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+          </div>
+          
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">shimanxiang</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

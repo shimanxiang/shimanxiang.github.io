@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="JavaScript变量声明提升"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Alert">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2015/06/10/JavaScript变量声明提升/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> JavaScript变量声明提升 - Alert </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Alert</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            About
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Alert</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <article class="post">
+    <div class="post-content">
+      <h2 id="JavaScript变量声明提升"><a href="#JavaScript变量声明提升" class="headerlink" title="JavaScript变量声明提升"></a>JavaScript变量声明提升</h2><p>原文地址：<a href="https://segmentfault.com/a/1190000002582759" target="_blank" rel="external">Segmentfault</a></p>
+<h3 id="hoisting机制"><a href="#hoisting机制" class="headerlink" title="hoisting机制"></a>hoisting机制</h3><p>javascript的变量声明具有hoisting机制，javascript引擎在执行的时候，会把所有变量的声明都提升到当前作用域的最前面。<br>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var v = <span class="string">"hello"</span>;</div><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">console.log(v);</div><div class="line">var v = <span class="string">"world"</span>;</div><div class="line">&#125;)();</div><div class="line">       //result:undefined</div><div class="line">             /*上面的代码等价下面这段*/</div><div class="line">var v = <span class="string">"hello"</span>;</div><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">var v; //declaration hoisting</div><div class="line">console.log(v);</div><div class="line">v = <span class="string">"world"</span>;</div><div class="line">&#125;)();         //result:undefined</div></pre></td></tr></table></figure>
+<p><strong>说明：function作用域里的变量v遮盖了上层作用域变量v</strong></p>
+<p>改动代码为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var v = <span class="string">"hello"</span>;</div><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">console.log(v);</div><div class="line">var v = <span class="string">"world"</span>;</div><div class="line">&#125;      //result:hello</div></pre></td></tr></table></figure>
+<p><strong>说明：javascript是没有块级作用域的。函数是javascript中唯一拥有自身作用域的结构。</strong></p>
+<h3 id="声明，定义与初始化"><a href="#声明，定义与初始化" class="headerlink" title="声明，定义与初始化"></a>声明，定义与初始化</h3><p>声明宣称一个名字的存在，定义则为这个名字分配存储空间，而初始化则是为名字分配的存储空间赋值，用C++来表达这三个概念</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">extern int i;//这是声明，表明名字i在某处已经存在了</div><div class="line">int i;//这是声明并定义名字i,为i分配存储空间</div><div class="line">i = 0;//这是初始化名字i,为其赋初值为0</div></pre></td></tr></table></figure>
+<p>而在javascript中则是这样</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var v;//声明变量v;</div><div class="line">v=<span class="string">"hello"</span>; //(定义并)初始化变量v</div></pre></td></tr></table></figure>
+<p><em>在函数中使用var关键字进行显式申明的变量是做为局部变量，而没有用var关键字，使用直接赋值方式声明的是全局变量。当我们使用访问一个没有声明的变量时，JS会报错。而当我们给一个没有声明的变量赋值时，JS不会报错，相反它会认为我们是要隐式申明一个全局变量。</em></p>
+<h3 id="声明提升"><a href="#声明提升" class="headerlink" title="声明提升"></a>声明提升</h3><p>当前作用域内的声明都会提升到作用域的最前面，包括变量和函数的声明</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">var a = <span class="string">"1"</span>;</div><div class="line">var f = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line">var b = <span class="string">"2"</span>;</div><div class="line">var c = <span class="string">"3"</span>;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>变量a,f,b,c的声明会被提升到函数作用域的最前面，类似如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">var a,f,b,c;</div><div class="line">a = <span class="string">"1"</span>;</div><div class="line">f = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line">b = <span class="string">"2"</span>;</div><div class="line">c = <span class="string">"3"</span>;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>又比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">//var f1,<span class="keyword">function</span> <span class="function"><span class="title">f2</span></span>()&#123;&#125;; //hoisting,被隐式提升的声明</div><div class="line"></div><div class="line">f1(); //ReferenceError: f1 is not defined</div><div class="line">f2();</div><div class="line"></div><div class="line">var f1 = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">f2</span></span>()&#123;&#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p><strong>说明：函数表达式并没有被提升，这也是函数表达式与函数声明的区别。</strong></p>
+<h3 id="命名函数表达式"><a href="#命名函数表达式" class="headerlink" title="命名函数表达式"></a>命名函数表达式</h3><p>可以像函数声明一样为函数表达式指定一个名字，但这并不会使函数表达式成为函数声明。命名函数表达式的名字不会进入名字空间，也不会被提升。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var f = <span class="keyword">function</span> <span class="function"><span class="title">foo</span></span>()&#123;</div><div class="line"><span class="built_in">return</span> typeof foo; // foo是在内部作用域内有效</div><div class="line">&#125;;</div><div class="line">// foo在外部用于是不可见的</div><div class="line">typeof foo; // <span class="string">"undefined"</span></div><div class="line">f(); // <span class="string">"function"</span></div></pre></td></tr></table></figure>
+<p><strong>命名函数表达式的名字只在该函数的作用域内部有效。，因为规范规定了标示符不能在外围的作用域内有效</strong></p>
+
+    </div>
+  </article>
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">shimanxiang</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript this | Sophiasmx&#39;s Blog</title>
+  <meta name="author" content="smx">
+  
+  <meta name="description" content="JavaScript this">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScript this"/>
+  <meta property="og:site_name" content="Sophiasmx&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Sophiasmx&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Sophiasmx&#39;s Blog</a></h1>
+  <h2><a href="/">不忘初心，方得始终</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-06-22T06:11:23.000Z"><a href="/2015/06/22/JavaScript之this/">2015-06-22</a></time>
+      
+      
+  
+    <h1 class="title">JavaScript this</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="JavaScript中有关this关键字的几个小题目">JavaScript中有关this关键字的几个小题目</h2><h3 id="请看以下代码，alert出来的值分别是什么(答案按alert先后顺序写的)">请看以下代码，alert出来的值分别是什么(答案按alert先后顺序写的)</h3><pre><code><span class="keyword">var</span> a = <span class="number">10</span>;  
+<span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> <span class="comment">{  
+    a = 100;  
+    alert(a);  
+    alert(this.a);  
+    var a;  
+    alert(a);  
+}</span>  
+<span class="title">test</span><span class="params">()</span>;</span>  
+</code></pre><p>正确答案：100,10,100；<br>说明：this.a中的this指的是window对象。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">showName</span><span class="params">()</span> </span>{ 
+    alert(<span class="keyword">this</span>.name); 
+} 
+<span class="keyword">var</span> obj = { 
+    id:<span class="number">1</span>,
+    name:<span class="string">"jacky"</span>,
+    showName:showName 
+  }; 
+obj.showName(); 
+</code></pre><p>正确答案：jacky<br>说明：this关键字指向函数(方法)的所有者,即obj对象。</p>
+<pre><code><span class="keyword">var</span> fullname =<span class="string">'John Doe'</span>;
+    <span class="keyword">var</span> obj ={
+        fullname:<span class="string">'Colin Ihrig'</span>,
+        prop:{
+        fullname:<span class="string">'Aurelio De Rosa'</span>,
+        getFullname:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+             <span class="keyword">return</span> <span class="keyword">this</span>.fullname;
+         }
+        }
+    };
+    alert(obj.prop.getFullname());
+    <span class="keyword">var</span> test = obj.prop.getFullname;
+    alert(test());
+</code></pre><p>正确答案： Aurelio De Rosa ，John Doe。<br>说明：第一个alert出来的this指的是obj对象，而test函数等价于<br>       var test=function(){<br>           return this.fullname;<br>        }<br>       此时this指的是全局对象</p>
+<pre><code><span class="keyword">var</span> myObject= {
+    num: <span class="number">2</span>,
+    add: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="keyword">this</span>.num=<span class="number">3</span>;
+            (<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            alert(<span class="keyword">this</span>.num);<span class="comment">//undefined</span>
+            <span class="keyword">this</span>.num=<span class="number">4</span>;
+            })();
+            alert(<span class="keyword">this</span>.num)<span class="comment">//3</span>
+        }
+}
+myObject.add();
+</code></pre><p>正确答案：undefined , 3</p>
+<pre><code><span class="keyword">var</span> a = <span class="string">'global'</span>;
+<span class="keyword">var</span> obj = {
+    a : <span class="string">'local'</span>,
+    test : <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="function"><span class="keyword">function</span> <span class="title">test1</span><span class="params">()</span></span>{
+                alert(<span class="keyword">this</span>.a);<span class="comment">//global</span>
+            }
+            alert(<span class="keyword">this</span>.a);<span class="comment">//local</span>
+            test1();
+    }
+};
+obj.test();
+</code></pre><p>正确答案：local ，global<br>说明：此题与上题属于一个类型。<strong>《JS权威指南》里明确指明了当一个函数作为函数而不是方法调用时这个this关键字引用全局对象。特别指明了，当一个嵌套的函数在一个包含函数中调用，而这个包含的函数是作为方法调用时，这也是成立的：this在包含的函数中有一个值，但是它却不太直观地引用嵌套的函数体的内部的全局对象。</strong></p>
+<a id="more"></a>
+      
+    </div>
+    <footer>
+      
+      <div class="clearfix"></div>       
+    </footer>
+  </div>
+</article>
+
+<nav id="pagination" >
+    
+    <a href="/2015/06/23/html/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/06/12/Function类型总结/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-JavaScript之this" data-title="JavaScript this" data-url="http://shimanxiang.github.io/2015/06/22/JavaScript之this/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shimanxiang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:shimanxiang.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>6</small></li>
+  
+    <li><a href="/categories/ajax/">ajax</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/兼容性/">兼容性</a><small>1</small></li>
+  
+    <li><a href="/categories/常见问题/">常见问题</a><small>1</small></li>
+  
+    <li><a href="/categories/每日一题/">每日一题</a><small>1</small></li>
+  
+    <li><a href="/categories/面试笔试/">面试笔试</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://weibo.com/3875424371/info">新浪微博</a></li>
+<li><a href="http://www.imooc.com/">慕课</a></li>
+<li><a href="http://www.dearhaoge.com/">问水</a></li>
+<li><a href="http://xiaojwithu.info/">随遇而安</a></li>
+<li><a href="http://www.cnblogs.com/hate13/">哈特13</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 smx
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+  <a href="https://github.com/shimanxiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript数据类型 | Sophiasmx&#39;s Blog</title>
+  <meta name="author" content="smx">
+  
+  <meta name="description" content="JavaScript数据类型">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScript数据类型"/>
+  <meta property="og:site_name" content="Sophiasmx&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Sophiasmx&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Sophiasmx&#39;s Blog</a></h1>
+  <h2><a href="/">不忘初心，方得始终</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-14T06:47:24.000Z"><a href="/2015/08/14/数据类型/">2015-08-14</a></time>
+      
+      
+  
+    <h1 class="title">JavaScript数据类型</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="数据类型">数据类型</h2><p><strong>ECMAScript中有5中简单数据类型：undefined ,null,boolean,number,string,和一种复杂数据类型object。object本质上是由一组无序的名值对组成的。ECMAScript不支持任何创建自定义类型的机制，而所有值最终都将是上述6种数据类型之一。</strong></p>
+<h3 id="undefined类型"><strong>undefined类型</strong></h3><p>undefined类型只有一个值，即特殊的undefined值。<br>例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var message；</span><br><span class="line">//var age 该变量并没有声明。</span><br><span class="line">alert(message); //<span class="string">"undefined"</span></span><br><span class="line">alert(age);//产生错误age is not defined;</span><br></pre></td></tr></table></figure></p>
+<p>对于尚未声明的对象只能执行一项操作，即用typeof操作符检测数据类型，对未声明的变量调用delete<br>不会导致错误，但是这样也没有什么实际意义，而且在严格模式下确定会导致错误。<br>然而需要注意的是：<br><strong>对未初始化的变量执行typeof操作符会返回undefined值，而对未声明的变量执行typeof操作符同样也会返回undefined值</strong></p>
+<p>例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var message;</span><br><span class="line">//var age该变量没有声明.</span><br><span class="line">alert(typeof message); //<span class="string">"undefined"</span></span><br><span class="line">alert(typeof age);// <span class="string">"undefined"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="null类型"><strong>null类型</strong></h3><p>null类型也只有一个值，即null。从逻辑角度来看，null值表示一个空对象指针，而这也是使用typeof操作符检测<br>null值时会返回object的原因。<br>实际上，undefined值时派生自null值的，因此ECMA-262规定对它们的相等性测试要返回true;<br>alert(null==undefined)//true</p>
+<h3 id="Boolean类型"><strong>Boolean类型</strong></h3><p>boolean类型只有两个字面值：true和false，这两个值与数字值不是一回事，因此ture不一定等于1，而false也不一定等于0。</p>
+<h3 id="number类型"><strong>number类型</strong></h3><p>1：最基本的数值字面量是十进制整数，八进制字面值的第一位必须是0，如果后面的数值超出了范围（0~7），那么前导0将忽略。后面的被当十进制数值解析。<br>八进制字面量在严格模式下是无效的。十六进制字面值的前两位必须是0x<br>2：保存浮点数值需要的内存空间是保存整数值的两倍。<br>3：NaN与任何值都不相等，包括NaN本身。0除以0返回NaN，正数除以0返回Infinity，负数除以0返回-Infinity。<br>4：有3个函数可以把非数值转化成数值，Number(),parseInt(),parseFloat();Number()可以用于任何数据类型，另外两个专门用于吧字符串转换成数值。在ECMAScript5中，parseInt()不具备解析八进制的能力。因此需要指定基数。<br>例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var num=parseInt(<span class="string">"070"</span>);</span><br><span class="line">console.log(num)//<span class="number">70</span></span><br><span class="line">var num=parseInt(<span class="string">"070"</span>,<span class="number">8</span>);</span><br><span class="line">console.log(num);//<span class="number">56</span></span><br></pre></td></tr></table></figure></p>
+<p>5:parseFloat()解析字符串时第一个小数点有效，后面的无效，另外，它始终会忽略前导0，parseFloat()可以识别浮点数值格式，包括十进制整数格式，但是十六进制格式的字符串则始终会被转换成0，并且它不像parseInt()可以用第二个参数指定基数的用法。最后如果字符串包含的是一个可解析为整数的数（没有小数点，或者小数点后都是零），parseFloat()会返回整数。<br>例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var num1=parseFloat(<span class="string">"1234bule"</span>); //<span class="number">1234</span></span><br><span class="line">var num2=parseFloat(<span class="string">"0xA"</span>);   //<span class="number">0</span></span><br><span class="line">var num3=parseFloat(<span class="string">"22.34.5"</span>)  //<span class="number">22.34</span></span><br><span class="line">var num4=parseFloat(<span class="string">"0908.5"</span>)   //<span class="number">908.5</span></span><br><span class="line">var num5=parseFloat(<span class="string">"3.125e7"</span>)  //<span class="number">31250000</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="String类型"><strong>String类型</strong></h3><p>把一个值转换为一个字符串有两种方式。第一种是使用toString()方法，几乎每个值都有，但是null和undefined值没有这个方法。第二种是使用转型函数String(),这个函数能将任何类型的值转换成字符串。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var age=<span class="number">11</span>;</span><br><span class="line">console.log(age.toString()); //字符串<span class="string">"11"</span></span><br><span class="line">var value=<span class="literal">true</span>;</span><br><span class="line">console.log(String(value));  //字符串<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
+<p>判断一个字符串是否是String类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> isString(str)&#123;</span><br><span class="line">    <span class="built_in">return</span> ((str instanceof String) || (typeof str).toLowerCase() == <span class="string">'string'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Object对象"><strong>Object对象</strong></h3><p>ECMAScript中的对象其实就是一组数据和功能的集合。<br>object每个对象都具有下列属性和方法</p>
+<p>1：constructor：保存着用于创建当前对象的函数。<br>2：hasOwnProperty：用于检查给定的属性在当前对象实例中是否存在。<br>3：isPrototypeof：用于检查传入的对象是否是传入对象的原型。<br>4：propertyIsEnumerable：用于检查给定的属性是否能够使用for-in语句来枚举。<br>5：toLocaleString()：返回对象的字符串表示，改字符串与执行环境的地区对应。<br>6：toString()：返回对象的字符串表示。<br>7：valueOf()：返回对象的字符串，数值或者布尔值表示，通常与toString()方法的返回值相同。</p>
+<p>由于数组本质上也是对象的一种，所以我们可以为数组添加属性，但并不影响length属性的值。<br>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [];</span><br><span class="line">arr[<span class="string">"p"</span>] = <span class="string">"abc"</span>;</span><br><span class="line">console.log(arr.length);//<span class="number">0</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">2.1</span>] = <span class="string">"abc"</span>;</span><br><span class="line">console.log(arr.length);//<span class="number">0</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+      <div class="clearfix"></div>       
+    </footer>
+  </div>
+</article>
+
+<nav id="pagination" >
+    
+    <a href="/2015/08/16/816ajax/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/07/24/常见问题/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="post-数据类型" data-title="JavaScript数据类型" data-url="http://shimanxiang.github.io/2015/08/14/数据类型/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shimanxiang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:shimanxiang.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/CSS/">CSS</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>6</small></li>
+  
+    <li><a href="/categories/ajax/">ajax</a><small>1</small></li>
+  
+    <li><a href="/categories/web/">web</a><small>2</small></li>
+  
+    <li><a href="/categories/兼容性/">兼容性</a><small>1</small></li>
+  
+    <li><a href="/categories/常见问题/">常见问题</a><small>1</small></li>
+  
+    <li><a href="/categories/每日一题/">每日一题</a><small>1</small></li>
+  
+    <li><a href="/categories/面试笔试/">面试笔试</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+
+  
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://weibo.com/3875424371/info">新浪微博</a></li>
+<li><a href="http://www.imooc.com/">慕课</a></li>
+<li><a href="http://www.dearhaoge.com/">问水</a></li>
+<li><a href="http://xiaojwithu.info/">随遇而安</a></li>
+<li><a href="http://www.cnblogs.com/hate13/">哈特13</a></li>
+</ul>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2016 smx
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+  <a href="https://github.com/shimanxiang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+</body>
+</html>
