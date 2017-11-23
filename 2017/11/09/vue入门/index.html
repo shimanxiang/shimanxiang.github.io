@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Vue从入门到再入门"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Alert">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.6.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/11/09/vue入门/"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.6.0" />
+
+
+
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+    <title> Vue从入门到再入门 - Alert </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Alert</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Alert</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Vue从入门到再入门
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017-11-09
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-js是什么？"><span class="toc-text">Vue.js是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-js的核心思想"><span class="toc-text">Vue.js的核心思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据驱动"><span class="toc-text">数据驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件化"><span class="toc-text">组件化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue对比React"><span class="toc-text">Vue对比React</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue项目构建"><span class="toc-text">Vue项目构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue实例生命周期"><span class="toc-text">Vue实例生命周期</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <h2 id="Vue-js是什么？"><a href="#Vue-js是什么？" class="headerlink" title="Vue.js是什么？"></a>Vue.js是什么？</h2><hr>
+<p>Vue.js是一套构建用户界面(user interface)的<strong>渐进式框架</strong>。与其他重量级框架不同的是，Vue 从根本上采用 <code>最小成本、渐进增量(incrementally adoptable)</code>的设计。Vue 的核心库只专注于视图层，并且很容易与其他第三方库或现有项目集成。另一方面，当与<a href="https://vuefe.cn/v2/guide/single-file-components.html" target="_blank" rel="external">单文件组件</a>和 <a href="https://github.com/vuejs/awesome-vue#components--libraries" target="_blank" rel="external">Vue生态系统支持的库</a>结合使用时，Vue 也完全能够为复杂的单页应用程序提供有力驱动。</p>
+<p>如何理解渐进式框架，渐进增量的设计？</p>
+<p>（1）主张性少<br>（2）可弹性收缩：Vue从设计角度来讲，虽然能够涵盖声明式渲染，组件系统，客户端路由，大规模状态管理，构建工具这些所有的东西，但是你并不需要一上手就把所有东西全用上，因为没有必要。当所要解决的问题内在复杂度很低的时候，可以只用核心的这些很简单的功能；当需要做一个更复杂的应用时，再增添相应的工具。例如做一个单页应用的时候才需要用路由；做一个相当庞大的应用，涉及到多组件状态共享以及多个开发者共同协作时，才可能需要大规模状态管理方案。</p>
+<p>如何理解声明式渲染？</p>
+<p>DOM和数据都是响应式的，数据驱动。现在基本所有的框架都已经认同这个看法——DOM应尽可能是一个函数式到状态的映射。<code>状态即是唯一的真相,DOM状态只是数据状态的一个映射</code>，所有的逻辑尽可能在状态的层面去进行，当状态改变的时候，View应该是在框架帮助下自动更新到合理的状态，而不是说当你观测到数据变化之后手动选择一个元素，再命令式地去改动它的属性。</p>
+<h2 id="Vue-js的核心思想"><a href="#Vue-js的核心思想" class="headerlink" title="Vue.js的核心思想"></a>Vue.js的核心思想</h2><hr>
+<h3 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h3><p>双向绑定：DOM是数据的一种自然映射，在vue.js中只需要操作数据，vue.js通过directives指令去对DOM做一层封装，当数据发生变化，会通知指令去修改对应的DOM，数据驱动DOM变化，DOM是数据的一种自然映射，vue.js还会对操作做一些监听，当我们修改视图的时候，vue.js监听到这些变化，从而去改变数据，这样就实现了数据的双向绑定。</p>
+<p>我们在数据驱动的时候,并没有操作dom节点,也没有侦听任何的事件,这些框架都为我们做好了,框架采用一种数据绑定的方式,自动绑定dom节点的属性.这样就把你从操作dom节点的繁琐过程中解脱出来了,你只要专注于数据的状态,ui更新的事情你不需要去管了,不过是样式还是内容,可见性还是切换class,框架帮你把关注点从传统的dom操作转移到了数据,回归编程的本质:数据结果+算法.</p>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>(1) 目的</p>
+<ul>
+<li>扩展HTML元素，封装可重用的代码</li>
+</ul>
+<p>(2) 设计原则</p>
+<ul>
+<li>页面上每个独立的可视/可交互区域视为一个组件</li>
+<li>页面不过是组件的容器，组件可以嵌套自由组合形成完整的页面。</li>
+</ul>
+<h2 id="Vue对比React"><a href="#Vue对比React" class="headerlink" title="Vue对比React"></a>Vue对比React</h2><hr>
+<blockquote>
+<p>React和Vue的使用范围是相似的都是基于组件化的轻量级框架，都专注于构建用户界面的视图层；都既可以用于简单的项目，也适用于使用前沿技术的大规模复杂项目。</p>
+</blockquote>
+<p>相似之处<br>（1）使用了Virtual DOM<br>（2）提供了响应式(reactive)和可组合的视图组件(composable view component)。<br>    <code>注解：响应式并不是指CSS的响应式，而是指响应式的数据绑定也就是双向数据绑定。</code><br>（3）将注意力集中保持在核心库，同时也关注路由和负责处理全局状态管理的辅助库。<br>   <code>注解：都有各自的配套工具，核心虽然只解决一个很小的问题，但它们有生态圈及配套的可选工具，当你把他们一个一个加进来的时候，就可以组合成非常强大的栈，就可以涵盖其他的这些更完整的框架所涵盖的问题。</code></p>
+<p>不同之处<br>    （1）Vue 的路由库和状态管理库都是由官方维护支持且与核心库同步更新的。React 则是选择把这些问题交给社区维护，因此创建了一个更分散的生态系统<br>    （2）在 React 中，所有的组件的渲染功能都依靠 JSX。JSX 是使用 XML 语法编写 Javascript 的一种语法糖。Vue默认使用模板(Template)。<br>    （3）ReactNative 能使你用相同的 React 组件模型编写有本地渲染能力的 APP（iOS 和 Android）。能同时跨多平台开发。Vue 和 Weex 会进行官方合作，Weex 是阿里的跨平台用户界面开发框架，Weex 的 JavaScript 框架运行时用的就是 Vue</p>
+<p>Vue的优势</p>
+<blockquote>
+<p>模板和渲染函数的弹性选择<br>简单的语法及项目创建<br>更快的渲染速度和更小的体积</p>
+</blockquote>
+<p>React的优势</p>
+<blockquote>
+<p>更适用于大型应用和更好的可测试性<br>同时适用于Web端和原生App<br>更大的生态圈带来的更多支持和工具</p>
+</blockquote>
+<h2 id="Vue项目构建"><a href="#Vue项目构建" class="headerlink" title="Vue项目构建"></a>Vue项目构建</h2><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> <span class="comment"># 最新稳定版本</span></div><div class="line">npm install vue</div><div class="line"> <span class="comment"># 安装 vue-cli</span></div><div class="line">npm install --global vue-cli</div><div class="line"></div><div class="line">vue init webpack project-name</div><div class="line"></div><div class="line"><span class="built_in">cd</span> project-name</div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">npm run dev</div></pre></td></tr></table></figure>
+<h2 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h2><hr>
+<p><img src="/2017/11/09/vue入门/life.png" alt="logo"></p>
+<p>如何使用钩子函数？</p>
+<blockquote>
+<p>beforecreate : 举个栗子：可以在这加个loading事件<br>created ：在这结束loading，还做一些初始化，实现函数自执行<br>mounted ： 在这发起后端请求，拿回数据，配合路由钩子做一些事情<br>beforeDestory： 你确认删除XX吗？ destoryed ：当前组件已被删除，清空相关内容</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/11/03/20171103/">
+        <span class="next-text nav-default">占位文章，莫要当真</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Alert</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.6.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.6.0"></script>
+
+  </body>
+</html>
