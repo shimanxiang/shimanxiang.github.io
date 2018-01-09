@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>为什么不建议使用类型构造器？ | Alert</title>
+  <title>20171204 | Alert</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="这两天好像越发的能感觉自己真的不是小孩子的年纪了，却常常，还是有着小孩子的幻想，做着小孩子的事情，在成人的世界规则里，这是需要付出代价的，而这个代价可能是工作，可能是朋友，是一切你不愿意失去却不得不失去的事情，大概这就是生活吧">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么不建议使用类型构造器？">
-<meta property="og:url" content="http://yoursite.com/2016/06/02/为什么不建议使用类型构造器/index.html">
+<meta property="og:title" content="20171204">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/21071204/index.html">
 <meta property="og:site_name" content="Alert">
-<meta property="og:description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
+<meta property="og:description" content="这两天好像越发的能感觉自己真的不是小孩子的年纪了，却常常，还是有着小孩子的幻想，做着小孩子的事情，在成人的世界规则里，这是需要付出代价的，而这个代价可能是工作，可能是朋友，是一切你不愿意失去却不得不失去的事情，大概这就是生活吧">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-11-03T03:46:30.085Z">
+<meta property="og:image" content="http://yoursite.com/2017/12/04/21071204/timg.jpg">
+<meta property="og:updated_time" content="2018-01-09T02:26:06.691Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么不建议使用类型构造器？">
-<meta name="twitter:description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
+<meta name="twitter:title" content="20171204">
+<meta name="twitter:description" content="这两天好像越发的能感觉自己真的不是小孩子的年纪了，却常常，还是有着小孩子的幻想，做着小孩子的事情，在成人的世界规则里，这是需要付出代价的，而这个代价可能是工作，可能是朋友，是一切你不愿意失去却不得不失去的事情，大概这就是生活吧">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/04/21071204/timg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Alert" type="application/atom+xml">
   
@@ -147,31 +149,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-为什么不建议使用类型构造器" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-21071204" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      为什么不建议使用类型构造器？
+      20171204
     </h1>
   
 
         
-        <a href="/2016/06/02/为什么不建议使用类型构造器/" class="archive-article-date">
-  	<time datetime="2016-06-02T06:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-02</time>
+        <a href="/2017/12/04/21071204/" class="archive-article-date">
+  	<time datetime="2017-12-04T05:58:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),<br>String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。<br>js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。<br>构造函数内如果有对this的引用，不会指向新实例本身（也不存在这个新实例），而是会指向调用构造函数时的上下文环境。<br>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> F()</div><div class="line">&#123;</div><div class="line">this.x = 1;</div><div class="line"><span class="built_in">return</span> &#123;y : 2&#125;;</div><div class="line">&#125;</div><div class="line">var f = new F();</div><div class="line">console.log(f) // object&#123;y:2&#125;</div></pre></td></tr></table></figure>
-<p>JavaScript构造函数可以返回一个对象，返回的对象将成为new运算符的运算值，此时this所引用的对象就会被覆盖。<br>但是如果返回值是原始值时，就不会覆盖实例化对象，此时，按普通函数的方式调用构造函数就可以得到返回值<br>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> F()</div><div class="line">&#123;</div><div class="line">this.x = 1;</div><div class="line"><span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">var f = new F();</div><div class="line">f.x //1;</div><div class="line">F(); //<span class="literal">true</span>;</div></pre></td></tr></table></figure>
-<p>因此，如果构造函数的返回值为对象，可以直接使用构造函数来引用该返回值对象。而不需要使用new运算符来运算。</p>
+        <p><img src="/2017/12/04/21071204/timg.jpg" alt="logo"></p>
+<p>这两天好像越发的能感觉自己真的不是小孩子的年纪了，却常常，还是有着小孩子的幻想，做着小孩子的事情，<br>在成人的世界规则里，这是需要付出代价的，而这个代价可能是工作，可能是朋友，是一切你不愿意失去却不得不失去的事情，大概这就是生活吧</p>
 
       
 
@@ -185,7 +184,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -204,18 +203,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/02/重回hexo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          重归Hexo
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/16/JQuery ajax/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JQuery Ajax</div>
+    <a href="/2017/11/09/vue入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue从入门到再入门</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -6,20 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>为什么不建议使用类型构造器？ | Alert</title>
+  <title>Alert</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
-<meta name="keywords" content="JavaScript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="为什么不建议使用类型构造器？">
-<meta property="og:url" content="http://yoursite.com/2016/06/02/为什么不建议使用类型构造器/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Alert">
+<meta property="og:url" content="http://yoursite.com/page/9/index.html">
 <meta property="og:site_name" content="Alert">
-<meta property="og:description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-11-03T03:46:30.085Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么不建议使用类型构造器？">
-<meta name="twitter:description" content="在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。构造函数内如果有对this的引用，不会指向新实">
+<meta name="twitter:title" content="Alert">
   
     <link rel="alternative" href="/atom.xml" title="Alert" type="application/atom+xml">
   
@@ -147,31 +142,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-为什么不建议使用类型构造器" class="article article-type-page " itemscope itemprop="blogPost">
+            
+  
+    <article id="page-跨域问题" class="article article-type-page  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      为什么不建议使用类型构造器？
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/05/跨域问题/">什么是跨域？</a>
     </h1>
   
 
         
-        <a href="/2016/06/02/为什么不建议使用类型构造器/" class="archive-article-date">
-  	<time datetime="2016-06-02T06:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-06-02</time>
+        <a href="/2015/06/05/跨域问题/" class="archive-article-date">
+  	<time datetime="2015-06-05T06:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在默认状态下，JavaScript预定义了很多构造函数，如Function(),Array(),Date(),<br>String(),如果去掉小括号，它们就是JavaScript内置对象，在JavaScript中，构造函数实际上就是类的一种抽象结构。<br>js的对象构造器，实际上是一个函数，如果不用new，相当于直接调用函数，用new方式，会创建对象的一个新实例。<br>构造函数内如果有对this的引用，不会指向新实例本身（也不存在这个新实例），而是会指向调用构造函数时的上下文环境。<br>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> F()</div><div class="line">&#123;</div><div class="line">this.x = 1;</div><div class="line"><span class="built_in">return</span> &#123;y : 2&#125;;</div><div class="line">&#125;</div><div class="line">var f = new F();</div><div class="line">console.log(f) // object&#123;y:2&#125;</div></pre></td></tr></table></figure>
-<p>JavaScript构造函数可以返回一个对象，返回的对象将成为new运算符的运算值，此时this所引用的对象就会被覆盖。<br>但是如果返回值是原始值时，就不会覆盖实例化对象，此时，按普通函数的方式调用构造函数就可以得到返回值<br>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> F()</div><div class="line">&#123;</div><div class="line">this.x = 1;</div><div class="line"><span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">var f = new F();</div><div class="line">f.x //1;</div><div class="line">F(); //<span class="literal">true</span>;</div></pre></td></tr></table></figure>
-<p>因此，如果构造函数的返回值为对象，可以直接使用构造函数来引用该返回值对象。而不需要使用new运算符来运算。</p>
+        <h3 id="一个域名地址的组成"><a href="#一个域名地址的组成" class="headerlink" title="一个域名地址的组成"></a>一个域名地址的组成</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http:// www  . abc.com  : 8080/  script/jquery.js</div><div class="line">协议   子域名   主域名    端口号  请求资源地址</div></pre></td></tr></table></figure>
+<p>不同域只间相互请求资源，就叫做跨域<br>比如：<a href="http://www.abc.com/index.html" target="_blank" rel="external">http://www.abc.com/index.html</a> 请求 <a href="http://www.efg.com/service.php" target="_blank" rel="external">http://www.efg.com/service.php</a><br>JavaScript出于安全方面的考虑，不允许进行跨域调用其他页面的对象<br>例如：www.abc.com/index.html 和 <a href="https://www.abc.com/index.html（跨域）" target="_blank" rel="external">https://www.abc.com/index.html（跨域）</a></p>
 
       
 
@@ -185,7 +179,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">域名</a>
         		</li>
       		
 		</ul>
@@ -194,33 +188,16 @@
       
 
       
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/06/05/跨域问题/">展开全文 >></a>
+        </p>
+      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/11/02/重回hexo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          重归Hexo
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/08/16/JQuery ajax/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JQuery Ajax</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -240,14 +217,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+    </nav>
   
 
 
@@ -270,8 +245,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
